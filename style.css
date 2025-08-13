@@ -1,0 +1,70 @@
+/* ==== Light Blue Markdown Table (no extra HTML/classes) ==== */
+:root {
+  --tbl-bg:    #f7fbff;  /* 背景（ごく淡い青） */
+  --tbl-bd:    #dbeafe;  /* 枠線（薄い水色）   */
+  --tbl-head:  #eff6ff;  /* ヘッダー背景        */
+  --tbl-text:  #123a55;  /* 文字色（落ち着いた青）*/
+  --tbl-hover: #f0f7ff;  /* 行ホバー            */
+  --tbl-stripe:#fbfdff;  /* ゼブラ薄色          */
+  --tbl-radius: 10px;
+  --tbl-font-size: 14px;
+}
+
+/* 基本レイアウト */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  background: var(--tbl-bg);
+  border: 1px solid var(--tbl-bd);
+  font-size: var(--tbl-font-size);
+  color: var(--tbl-text);
+}
+
+/* セル共通 */
+th, td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--tbl-bd);
+  vertical-align: top;
+}
+
+/* ヘッダー */
+thead th {
+  background: var(--tbl-head);
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid var(--tbl-bd);
+}
+
+/* ゼブラ & ホバー */
+tbody tr:nth-child(odd) td { background: var(--tbl-stripe); }
+tbody tr:hover td         { background: var(--tbl-hover); }
+
+/* 角丸（ラッパー無しでも自然に見せる） */
+thead th:first-child { border-top-left-radius: var(--tbl-radius); }
+thead th:last-child  { border-top-right-radius: var(--tbl-radius); }
+tbody tr:last-child td:first-child { border-bottom-left-radius: var(--tbl-radius); }
+tbody tr:last-child td:last-child  { border-bottom-right-radius: var(--tbl-radius); }
+
+/* コード（Markdownの`code`など） */
+td code, th code {
+  background: #eaf4ff;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* 狭い画面で左右スクロールが必要な場合の最低幅（任意） */
+table { min-width: 640px; }
+
+/* ダークモード微調整（任意） */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tbl-bg:    #0b1823;
+    --tbl-bd:    #214560;
+    --tbl-head:  #0f2030;
+    --tbl-text:  #d8e6f3;
+    --tbl-hover: #122636;
+    --tbl-stripe:#0c1b28;
+  }
+}
